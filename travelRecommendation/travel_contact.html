@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="./travel_recommendation.css">
+</head>
+<body>
+    <style>
+    body{
+        text-align: left;
+    }
+    /* Some basic styling for demonstration purposes */
+    #contactForm {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: black;
+      border-radius: 25px;
+      opacity: .8;
+      padding: 10px;
+    }
+    #contactForm input,
+    #contactForm textarea {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 8px;
+    }
+    #contactForm button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #contactForm button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+    <nav>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div class="contact">
+        <p>
+            <h1> Contact Us </h1>
+            Get in touch
+        </p>
+    </div>
+    <div class="form">
+        <form id="contactForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

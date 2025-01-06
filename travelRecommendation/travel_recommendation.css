@@ -1,0 +1,32 @@
+nav {
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+nav ul {
+    list-style-type: none;
+    /* padding: 0; */
+  }
+  
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+nav a {
+    color: white;   
+    text-decoration: none;
+    font-weight: bold;
+  }
+nav input[type=text] {
+    align-items: right;
+}
+body {
+        background-image: url('background-image.jpg');
+        color: white;
+        font-weight: bold;
+        font-size: larger;
+}
