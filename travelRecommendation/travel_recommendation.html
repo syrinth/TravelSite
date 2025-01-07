@@ -7,8 +7,23 @@
 </head>
 <body>
     <style>
+        .flex-container {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .flex-container > div {
+            margin: 10px;
+        }
+
         p{
-            padding: 20px;
+        }
+        #recommendations{
+            max-width: 50%;
+            margin: 0 auto;
+            background-color: black;
+            border-radius: 25px;
+            padding:10px;
         }
     </style>
 
@@ -19,15 +34,13 @@
             <li><a href="">Contact Us</a></li>
             <li><input type="text" id="searchbar" placeholder="Enter a destination or keyword" /></li>
             <li><input type="button" id="btn-search" value="Search"/></li>
-            <li><input type="button" value="Clear"/></li>
+            <li><input type="button" id="clearButton" value="Clear"/></li>
         </ul>
     </nav>
-    <div>
-        <p>
-            Welcome to my travel agency
-        </p>
-    </div>
-    <div id="recommendations">
+    <div class="flex-container" id="target">
+        <div>
+            <h1>Welcome!</h1>
+        </div>
     </div>
     <script src="./travel_recommendation.js"></script>
 </body>

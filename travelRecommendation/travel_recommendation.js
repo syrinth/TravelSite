@@ -6,26 +6,70 @@ function makeRecommendation(){
         fetch("travel_recommendation_api.json")
         .then(response => response.json())
         .then(data => {
+            var displayTime = false;
             switch(searchTerm){
-                case "countries":
-                    data.countries.forEach(e => {locales.push(e);});
+                case "country" || "countries":
+                    displayTime = true;
+                    data.countries.forEach(e => {
+                        e.cities.forEach(location => locales.push(location)) 
+                    });
                     break;
-                case "beaches":
+                case "beach" || "beaches":
                     data.beaches.forEach(e => {locales.push(e);});
                     break;
-                case "temples":
+                case "temple" || "temples":
                     data.temples.forEach(e => {locales.push(e);});
                     break;
-            }
+                default:
+                    displayTime = true;
+                    data.countries.forEach(e => {
+                        if(e.name.toLowerCase() == searchTerm.toLowerCase()){
+                            e.cities.forEach(location => locales.push(location)) 
+                        }
+                    });
+                    break;
+            } 
 
-            const recs = document.getElementById("recommendations");
-            recs.innerHTML += `<br>Recommendations:<br>`;
-            for (const place in locales) {
-                recs.innerHTML += `<h2>${place.name}</h2>
-                <p>${place.description}</p>`;
+            if(locales.length > 0){
+                const flexbox = document.getElementById("target");
+
+                var element = document.getElementById("recommendations");
+                if(element){
+                    element.parentNode.removeChild(element);
+                }
+
+                const recs = document.createElement("div");
+                recs.setAttribute("id", "recommendations");
+                recs.innerHTML = `<br>Recommendations:<br>`;
+                locales.forEach( place => {
+                    recs.innerHTML += `<img src=${place.imageUrl}>
+                    <h2>${place.name}</h2>`;
+                    if(displayTime){
+                        const options = { timeZone: `${place.timezone}`, hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+                        const timezone = new Date().toLocaleTimeString('en-US', options);
+                        recs.innerHTML += `<p>Current Time: ${timezone}</p>`;
+                    }
+                    recs.innerHTML += `<p>${place.description}</p>`;
+                })
+
+                flexbox.appendChild(recs);
             }
         })
     }
 }
+function display(locales){
+    
+}
 
 document.getElementById("btn-search").addEventListener("click", makeRecommendation);
+
+function clearItAll(){
+    var element = document.getElementById("recommendations");
+    if(element){
+        element.parentNode.removeChild(element);
+    }
+
+    document.getElementById("searchbar").value = "";
+}
+
+document.getElementById("clearButton").addEventListener("click", clearItAll);
